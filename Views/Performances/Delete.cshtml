@@ -1,0 +1,38 @@
+﻿@model Theater.Performance
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Видалити виставу зі списку</h1>
+
+<h3><font color="red">Ви впевнені, що хочете видалити цю виставу зі списку?</font></h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PrName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrYear)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PrYear)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrInfo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PrInfo)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="PrId" />
+        <input type="submit" value="Видалити" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-info">Повернутись до списку</a>
+    </form>
+</div>

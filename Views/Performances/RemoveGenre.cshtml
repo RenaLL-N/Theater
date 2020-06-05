@@ -1,0 +1,38 @@
+﻿@model Theater.PerformanceGenres
+
+@{
+    ViewData["Title"] = "Remove";
+}
+
+<h1>Видалити жанр</h1>
+
+<div>
+    <h4>Жанр</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PrId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pr.PrName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GnId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gn.GnName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Info)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Info)
+        </dd>
+    </dl>
+
+    <form asp-action="RemoveGenre">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Видалитиn btn-danger" /> |
+        <a asp-action="Performance" asp-route-id="@ViewBag.Back" class="btn btn-info">Повернутись до списку</a>
+    </form>
+</div>

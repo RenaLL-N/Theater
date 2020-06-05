@@ -1,0 +1,36 @@
+﻿@model Theater.Performance
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Додатково</h1>
+
+<div>
+    <h4>Вистави</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PrName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrYear)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PrYear)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrInfo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PrInfo)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PrId">Змінити</a> |
+    <a asp-action="Index">Повернутись до списку</a>
+</div>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Theater.TheaterPerformances>
+
+@{
+    ViewData["Title"] = "Performances";
+}
+
+<h1>Вистави</h1>
+
+<a asp-action="AddPerformance" asp-route-id="@ViewBag.ThId"><button type="button" class="btn btn-success">Додати виставу</button></a>
+<a asp-controller="Performances" asp-action="Index"><button type="button" class="btn btn-success">Список вистав</button></a>
+<a asp-action="Index"><button type="button" class="btn btn-success">Список театрів</button></a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pr.PrName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pr.PrYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pr.PrInfo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pr.PrName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pr.PrYear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pr.PrInfo)
+                </td>
+                <td>
+                    @foreach (var PerfGenre in item.Pr.PerformanceGenres)
+                    {
+
+                        @Html.DisplayFor(modelItem => PerfGenre.Gn.GnName)<text>,</text>
+
+                    }
+                </td>
+
+                <td>
+                    <a asp-controller="Performances" asp-action="Edit" asp-route-id="@item.Pr.PrId" class="btn btn-warning">Змінити</a> |
+                    <a asp-action="RemovePerformance" asp-route-id="@item.Id" class="btn btn-danger">Видалити</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

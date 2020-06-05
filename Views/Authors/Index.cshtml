@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Theater.Authors>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Список авторів</h1>
+
+<p>
+    <a asp-action="Create"><button type="button" class="btn btn-success">Додати автора</button></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AuName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuDateb)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuDated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuInfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuCtNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuDateb)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuDated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuInfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuCtNavigation.CtName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AuId" class="btn btn-warning">Змінити</a> |
+                <a asp-action="Details" asp-route-id="@item.AuId" class="btn bg-info"><font color="white">Додатково</font></a> |
+                <a asp-action="Delete" asp-route-id="@item.AuId" class="btn btn-danger">Видалити</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

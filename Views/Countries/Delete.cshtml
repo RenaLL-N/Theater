@@ -1,0 +1,26 @@
+﻿@model Theater.Countries
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Видалити країну</h1>
+
+<h3><font color="red">Ви впевнені, що хочете видалити цю країну зі списку?</font></h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CoName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CoName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CoId" />
+        <input type="submit" value="Видалити" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-info">Повернутись до списку</a>
+    </form>
+</div>

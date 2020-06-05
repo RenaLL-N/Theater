@@ -1,0 +1,40 @@
+﻿@model Theater.Performance
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Додати виставу до списку</h1>
+
+<h4>Вистави</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PrName" class="control-label"></label>
+                <input asp-for="PrName" class="form-control" />
+                <span asp-validation-for="PrName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrYear" class="control-label"></label>
+                <input asp-for="PrYear" class="form-control" />
+                <span asp-validation-for="PrYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrInfo" class="control-label"></label>
+                <input asp-for="PrInfo" class="form-control" />
+                <span asp-validation-for="PrInfo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Додати" class="btn btn-primary" /> |
+                <a asp-action="Index" class="btn btn-info">Повернутись до списку</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

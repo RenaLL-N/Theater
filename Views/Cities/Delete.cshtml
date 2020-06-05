@@ -1,0 +1,32 @@
+﻿@model Theater.Cities
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Видалити місто</h1>
+
+<h3><font color="red">Ви впевнені, що хочете видалити це місто зі списку?</font></h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CtName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CtName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Co)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Co.CoName)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CtId" />
+        <input type="submit" value="Видалити" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-info">Повернутись до списку</a>
+    </form>
+</div>

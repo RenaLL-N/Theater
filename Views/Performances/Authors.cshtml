@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Theater.PerformanceAuthor>
+
+@{
+    ViewData["Title"] = "Authors";
+}
+
+<h1>Список авторів</h1>
+
+<a asp-action="AddAuthor" asp-route-id="@ViewBag.PrId"><button type="button" class="btn btn-success">Додати автора</button></a> |
+<a asp-action="Index"><button type="button" class="btn btn-success">Список авторів</button></a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Au.AuName)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Au.AuName)
+                </td>
+                <td>
+                    <a asp-action="RemoveAuthor" asp-route-id="@item.Id" class="btn btn-danger">Видалити автора</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

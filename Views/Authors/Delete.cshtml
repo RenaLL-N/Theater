@@ -1,0 +1,50 @@
+﻿@model Theater.Authors
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Видалити автора</h1>
+
+<h3><font color="red">Ви впевнені, що хочете видалити цього автора зі списку?</font></h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AuName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AuName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AuDateb)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AuDateb)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AuDated)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AuDated)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AuInfo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AuInfo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AuCtNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AuCtNavigation.CtName)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="AuId" />
+        <input type="submit" value="Видалити" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-info">Повернутись до списку</a>
+    </form>
+</div>

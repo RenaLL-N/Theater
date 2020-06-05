@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Theater.PerformanceGenres>
+
+@{
+    ViewData["Title"] = "Genres";
+}
+
+<h1>Список жанрів</h1>
+
+<a asp-action="AddGenre" asp-route-id="@ViewBag.PrId"><button type="button" class="btn btn-success">Додати жанр</button></a> |
+<a asp-action="Index"><button type="button" class="btn btn-success">Список вистав</button></a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Gn.GnName)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gn.GnName)
+                </td>
+                <td>
+                    <a asp-action="RemoveGenre" asp-route-id="@item.Id" class="btn btn-danger">Видалити жанр</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

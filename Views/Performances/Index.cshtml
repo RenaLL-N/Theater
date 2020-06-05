@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Theater.Performance>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Список вистав</h1>
+
+<p>
+    <a asp-action="Create"><button type="button" class="btn btn-success">Додати виставу</button></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PrName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrInfo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrYear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrInfo)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PrId" class="btn btn-warning">Змінити</a> |
+                    <a asp-action="Genres" asp-route-id="@item.PrId" class="btn btn-info">Жанри</a> |
+                    <a asp-action="Authors" asp-route-id="@item.PrId" class="btn btn-info">Автор</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PrId" class="btn btn-danger">Видалити</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

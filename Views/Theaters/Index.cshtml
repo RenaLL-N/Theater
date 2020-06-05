@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Theater.Theaters>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Список театрів</h1>
+
+<p>
+    <a asp-action="Create"><button type="button" class="btn btn-success">Додати театр</button></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ThName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThWebsite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThInfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThCtNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThWebsite)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThInfo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThCtNavigation.CtName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ThId"><button type="button" class="btn btn-warning">Редагувати</button></a> |
+                    <a asp-action="Performance" asp-route-id="@item.ThId"><button type="button" class="btn btn-info">Вистави в театрі</button></a> |
+                    <a asp-action="Delete" asp-route-id="@item.ThId"><button type="button" class="btn btn-danger">Видалити</button></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="container text-center">
+    <div id="Th" class="inline"></div>
+</div>
+
+@section scripts{
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script>
+        google.charts.load('current', { packages: ['corechart'] });
+        google.charts.setOnLoadCallback(drawTh);
+        function drawTh() {
+            $.get('/api/Chart/JsonData', function (JsonData) {
+                data = google.visualization.arrayToDataTable(JsonData, false);
+                var option = {
+                    title: "Статистика вистав",
+                };
+                chart = new google.visualization.PieChart(document.getElementById('Th'));
+                chart.draw(data, option);
+            })
+        }
+    </script>
+}

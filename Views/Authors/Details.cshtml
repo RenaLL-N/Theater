@@ -1,0 +1,47 @@
+﻿@model Theater.Authors
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Додатково</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AuName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AuName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AuDateb)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AuDateb)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AuDated)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AuDated)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AuInfo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AuInfo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AuCtNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AuCtNavigation.CtName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.AuId" class="btn btn-warning">Змінити</a> |
+    <a asp-action="Index" class="btn btn-info">Повернутись до списку</a>
+</div>
